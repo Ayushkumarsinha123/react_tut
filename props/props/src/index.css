@@ -1,0 +1,12 @@
+.student {
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: larger;
+  font-family: sans-serif;
+  color: blue;
+  
+}
+
+.student p{
+  margin: 10px;
+}
