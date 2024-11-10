@@ -2,14 +2,15 @@
 
 function Button() {
   
+    const imageURL = './Click_event/src/assets/profile.jpg'
 
-    const eventClick = () => console.log("stop clicking me");
-    const eventClick2 = (name) => console.log(`${name}stop clicking me`);
+    const eventHandler = (e) => {
+      e.target.display = "none";
 
-
-    return(
-     
-  <button onClick={() => eventClick2("ayush ")}>click me</button> )
+      return(
+        <img onClick= {(e) => eventHandler(e)} src={imageURL}></img>
+      )
+    } 
 }
 
 export default Button 
