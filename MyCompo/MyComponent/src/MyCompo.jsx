@@ -1,30 +1,52 @@
 import React,{useState} from "react";
 
-function MyCompo() {
-  const [foods, setFoods] =useState(['apple','orange','banana'])
+function MyCompo(){
+  const [car, setCar] = useState([]);
+  const [ carYear, setCarYear ] = useState(new Date().getFullYear());
+  const [ carMake, setCarMake ] = useState("");
+  const [ carModel, setCarModel] = useState("");
 
-  function handleAddFood() {
-      const newFood = document.getElementById('foodInput').value;
-      document.getElementById('foodInput').value = "";
+  function handleAddCar() {
+      const newCar = {year: carYear,
+                      make: carMake,
+                      model: carModel};
 
-      setFoods(foods => [...foods,newFood])
-
+      setCar(c => [...c, new car]);
   }
 
-  function handleRemoveFood(index) {
-    setFoods(foods.filter((_,i) => i !== index));
+  function handleRemoveCar(index) {
+      setCar(c => c.filter((_, i) => i !== index));
   }
 
-  return(<>
-            <div>
-             <h2>List of food</h2>
-             <ul>
-              {foods.map((food, index) => <li key={index} onClick={() => handleRemoveFood(index)}>{food}</li> )}
-             </ul>
-             <input type="text" id="foodInput" placeholder="enter food name"></input>
-             <button onClick={handleAddFood}>Add food</button>
-            </div>
-           </>)
+  function handleYearChange(event) {
+      setCarYear(event.target.value);
+  }
+   
+  function handleMakeChange(event) {
+      setCarMake(event.target.value);
+  }
+
+  function handleModalChange(event){
+      setCarModel(event.target.value)
+  }
+
+  return (<>
+  <div>
+    <h2>List of car Objects</h2>
+    <ul>
+      {car.map((car, index) => 
+      <li key={index}>
+        {car.year} {car.make} {car.model} 
+
+      </li>
+      )}
+    </ul>
+    <input type="number" value={carYear} onChange={handleYearChange} />
+    <input type="text" value={carMake} onChange={handleMakeChange} placeholder="Enter car make"/>
+    <input type="text" value={carModel} onChange={handleModalChange} placeholder="Enter car model"/>
+    <button onClick={handleAddCar}>Add car</button>
+  </div>  
+  </>)
 }
 
-export default MyCompo
+export default MyCompo;
